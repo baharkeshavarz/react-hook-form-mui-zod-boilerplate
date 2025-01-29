@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Users from "./users/components/Users.tsx";
+import UsersProvider from "./users/components/UsersProvider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Users />
+    <UsersProvider />
   </StrictMode>
 );
