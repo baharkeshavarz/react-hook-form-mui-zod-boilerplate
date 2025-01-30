@@ -1,8 +1,8 @@
 import { Button, Stack, TextField } from "@mui/material";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
-import { Schema } from "../types/schema";
 import { Option } from "../../types/option";
+import { Schema } from "../types/schema";
 
 const Users = () => {
   const {

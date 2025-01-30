@@ -1,13 +1,13 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import Users from "./Users";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Schema } from "zod";
-import { userSchema } from "../types/schema";
+import { defaultValues, Schema, userSchema } from "../types/schema";
 
 const UsersProvider = () => {
   const methods = useForm<Schema>({
     mode: "all",
     resolver: zodResolver(userSchema),
+    defaultValues,
   });
 
   return (

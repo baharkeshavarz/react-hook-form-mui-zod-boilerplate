@@ -12,11 +12,15 @@ export const userSchema = z.object({
   states: z.array(z.string()).min(1).max(2),
 });
 
-console.log(userSchema);
-
 export type Schema = z.infer<typeof userSchema>;
 /// The Type is now Schema:
 // type Schema = {
 //     name: string;
 //     email: string;
 // }
+
+export const defaultValues: Schema = {
+  name: "",
+  email: "",
+  states: [],
+};
