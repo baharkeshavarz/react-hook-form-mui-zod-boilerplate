@@ -1,5 +1,11 @@
+import UsersProvider from "./users/components/UsersProvider";
+
 function App() {
-  return <>App</>;
+  return (
+    <>
+      <UsersProvider />
+    </>
+  );
 }
 
 export default App;

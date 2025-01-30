@@ -1,8 +1,8 @@
 import { Button, Stack, TextField } from "@mui/material";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
-import { Option } from "../../types/option";
 import { Schema } from "../types/schema";
+import { useStates } from "../services/queries";
 // import { useEffect } from "react";
 
 const Users = () => {
@@ -13,20 +13,7 @@ const Users = () => {
     formState: { errors },
   } = useFormContext<Schema>();
 
-  const options: Option[] = [
-    {
-      id: "1",
-      label: "Callifornia",
-    },
-    {
-      id: "2",
-      label: "Texas",
-    },
-    {
-      id: "3",
-      label: "Arizona",
-    },
-  ];
+  const { data } = useStates();
 
   const submitForm: SubmitHandler<Schema> = (data) => {
     console.log("Submitted data::", data);
@@ -58,7 +45,7 @@ const Users = () => {
         />
 
         <RHFAutocomplete<Schema>
-          options={options}
+          options={data || []}
           name="states"
           label="Select States"
         />
