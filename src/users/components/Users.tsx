@@ -3,11 +3,13 @@ import { SubmitHandler, useFormContext } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
 import { Option } from "../../types/option";
 import { Schema } from "../types/schema";
+// import { useEffect } from "react";
 
 const Users = () => {
   const {
     handleSubmit,
     register,
+    watch,
     formState: { errors },
   } = useFormContext<Schema>();
 
@@ -30,9 +32,18 @@ const Users = () => {
     console.log("Submitted data::", data);
   };
 
+  // useEffect(() => {
+  //   const sub = watch((value) => {
+  //     console.log(value);
+  //   });
+
+  //   return () => sub.unsubscribe();
+  // }, [watch]);
+
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <Stack width={300} spacing={2}>
+        {watch("name")}
         <TextField
           {...register("name")}
           label="Name"
