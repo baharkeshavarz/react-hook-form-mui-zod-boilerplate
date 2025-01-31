@@ -11,6 +11,7 @@ import {
 import { RHFToggleButtonGroup } from "../../components/RHFToggleButtonGroup";
 import { RHFRadioGroup } from "../../components/RHFRadioGroup";
 import { RHFCheckbox } from "../../components/RHFCheckbox";
+import { RHFDateAndTimePicker } from "../../components/RHFDateAndTimePicker";
 // import { useEffect } from "react";
 
 const Users = () => {
@@ -75,6 +76,11 @@ const Users = () => {
           name="skills"
           label="Skills"
           options={skillsQuery?.data || []}
+        />
+
+        <RHFDateAndTimePicker<Schema>
+          label="Registeration Date And Time"
+          name="registerationDateAndTime"
         />
 
         <Button variant="contained" type="submit">

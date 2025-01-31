@@ -13,6 +13,7 @@ export const userSchema = z.object({
   languagesSpoken: z.array(z.string()),
   gender: z.string().min(1), // like "2",
   skills: z.array(z.string()).max(2),
+  registerationDateAndTime: z.date(),
 });
 
 export type Schema = z.infer<typeof userSchema>;
@@ -29,4 +30,5 @@ export const defaultValues: Schema = {
   languagesSpoken: [],
   gender: "",
   skills: [],
+  registerationDateAndTime: new Date(),
 };

@@ -23,7 +23,7 @@ export function RHFRadioGroup<T extends FieldValues>({
 
   return (
     <Controller
-    control={control}
+      control={control}
       name={name}
       render={({ field, fieldState: { error } }) => (
         <FormControl {...field} error={!!error}>
