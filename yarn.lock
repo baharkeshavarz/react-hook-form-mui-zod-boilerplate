@@ -550,7 +550,21 @@
     prop-types "^15.8.1"
     react-is "^19.0.0"
 
-"@mui/x-date-pickers@^7.25.0":
+"@mui/x-date-pickers-pro@^7.25.0":
+  version "7.25.0"
+  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers-pro/-/x-date-pickers-pro-7.25.0.tgz#4d6d083907b18e3338d9632a4e4ed6a24f7597fd"
+  integrity sha512-fEOsqMDPF0+p6g/Xn33CMVX5LTXixZfzc76+tsf81njUGsm+GPdtgvQuG8bO1/7tr++wSu6yZea4xZpAeIGGUA==
+  dependencies:
+    "@babel/runtime" "^7.25.7"
+    "@mui/utils" "^5.16.6 || ^6.0.0"
+    "@mui/x-date-pickers" "7.25.0"
+    "@mui/x-internals" "7.25.0"
+    "@mui/x-license" "7.25.0"
+    clsx "^2.1.1"
+    prop-types "^15.8.1"
+    react-transition-group "^4.4.5"
+
+"@mui/x-date-pickers@7.25.0", "@mui/x-date-pickers@^7.25.0":
   version "7.25.0"
   resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-7.25.0.tgz#3cbd6733e84061bf1643571248de217f24075027"
   integrity sha512-t62OSFAKwj7KYQ8KcwTuKj6OgDuLQPSe4QUJcKDzD9rEhRIJVRUw2x27gBSdcls4l0PTrba19TghvDxCZprriw==
@@ -570,6 +584,15 @@
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@mui/utils" "^5.16.6 || ^6.0.0"
+
+"@mui/x-license@7.25.0":
+  version "7.25.0"
+  resolved "https://registry.yarnpkg.com/@mui/x-license/-/x-license-7.25.0.tgz#12e721639a699c9e3287dd8471b51ea010a7ef8b"
+  integrity sha512-REUxU1UqaHIMhkLi15A3hCARDp7hRvFSnWVWIoPvn/YOtMkjwBj7Kecvdxc2AAdy//kw00nn1dHru2M2Kh5wrw==
+  dependencies:
+    "@babel/runtime" "^7.25.7"
+    "@mui/utils" "^5.16.6 || ^6.0.0"
+    "@mui/x-internals" "7.25.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

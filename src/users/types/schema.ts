@@ -14,6 +14,7 @@ export const userSchema = z.object({
   gender: z.string().min(1), // like "2",
   skills: z.array(z.string()).max(2),
   registerationDateAndTime: z.date(),
+  formerEmploymentPeriod: z.array(z.date()).min(2).max(2),
 });
 
 export type Schema = z.infer<typeof userSchema>;
@@ -31,4 +32,5 @@ export const defaultValues: Schema = {
   gender: "",
   skills: [],
   registerationDateAndTime: new Date(),
+  formerEmploymentPeriod: [new Date(), new Date()],
 };

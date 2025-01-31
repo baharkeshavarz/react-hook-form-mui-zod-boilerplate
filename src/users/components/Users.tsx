@@ -1,4 +1,4 @@
-import { Button, Stack, TextField } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
 import { Schema } from "../types/schema";
@@ -12,6 +12,7 @@ import { RHFToggleButtonGroup } from "../../components/RHFToggleButtonGroup";
 import { RHFRadioGroup } from "../../components/RHFRadioGroup";
 import { RHFCheckbox } from "../../components/RHFCheckbox";
 import { RHFDateAndTimePicker } from "../../components/RHFDateAndTimePicker";
+import { RHFDateRangePicker } from "../../components/RHFDateRangePicker";
 // import { useEffect } from "react";
 
 const Users = () => {
@@ -82,6 +83,8 @@ const Users = () => {
           label="Registeration Date And Time"
           name="registerationDateAndTime"
         />
+        <Typography>Former Employment Period:</Typography>
+        <RHFDateRangePicker<Schema> name="formerEmploymentPeriod" />
 
         <Button variant="contained" type="submit">
           Submit
