@@ -5,7 +5,7 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 type RHFAutocompleteProps<T extends FieldValues> = {
-  name: Path<T>;
+  name: Path<T>; // Ensures `name` is a valid field key from the form schema
   label: string;
   options: Option[];
 };
@@ -15,7 +15,7 @@ export function RHFAutocomplete<T extends FieldValues>({
   label,
   options,
 }: RHFAutocompleteProps<T>) {
-  const { control } = useFormContext();
+  const { control } = useFormContext<T>();
 
   return (
     <Controller

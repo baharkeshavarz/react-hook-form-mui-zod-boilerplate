@@ -2,7 +2,8 @@ import { Button, Stack, TextField } from "@mui/material";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
 import { Schema } from "../types/schema";
-import { useStates } from "../services/queries";
+import { useLanguages, useStates } from "../services/queries";
+import { RHFToggleButtonGroup } from "../../components/RHFToggleButtonGroup";
 // import { useEffect } from "react";
 
 const Users = () => {
@@ -13,7 +14,8 @@ const Users = () => {
     formState: { errors },
   } = useFormContext<Schema>();
 
-  const { data } = useStates();
+  const statesQuery = useStates();
+  const languagesQuery = useLanguages();
 
   const submitForm: SubmitHandler<Schema> = (data) => {
     console.log("Submitted data::", data);
@@ -45,9 +47,14 @@ const Users = () => {
         />
 
         <RHFAutocomplete<Schema>
-          options={data || []}
+          options={statesQuery?.data || []}
           name="states"
           label="Select States"
+        />
+
+        <RHFToggleButtonGroup<Schema>
+          name="languagesSpoken"
+          options={languagesQuery?.data || []}
         />
 
         <Button variant="contained" type="submit">
