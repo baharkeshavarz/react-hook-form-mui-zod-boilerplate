@@ -2,9 +2,15 @@ import { Button, Stack, TextField } from "@mui/material";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
 import { Schema } from "../types/schema";
-import { useGenders, useLanguages, useStates } from "../services/queries";
+import {
+  useGenders,
+  useLanguages,
+  useSkills,
+  useStates,
+} from "../services/queries";
 import { RHFToggleButtonGroup } from "../../components/RHFToggleButtonGroup";
 import { RHFRadioGroup } from "../../components/RHFRadioGroup";
+import { RHFCheckbox } from "../../components/RHFCheckbox";
 // import { useEffect } from "react";
 
 const Users = () => {
@@ -18,6 +24,7 @@ const Users = () => {
   const statesQuery = useStates();
   const languagesQuery = useLanguages();
   const gendersQuery = useGenders();
+  const skillsQuery = useSkills();
 
   const submitForm: SubmitHandler<Schema> = (data) => {
     console.log("Submitted data::", data);
@@ -62,6 +69,12 @@ const Users = () => {
           name="gender"
           label="Choose the Gender"
           options={gendersQuery?.data || []}
+        />
+
+        <RHFCheckbox<Schema>
+          name="skills"
+          label="Skills"
+          options={skillsQuery?.data || []}
         />
 
         <Button variant="contained" type="submit">
