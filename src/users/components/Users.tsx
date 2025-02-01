@@ -6,21 +6,23 @@ import {
   useGenders,
   useLanguages,
   useSkills,
-  useStates,
+  useStates
 } from "../services/queries";
 import { RHFToggleButtonGroup } from "../../components/RHFToggleButtonGroup";
 import { RHFRadioGroup } from "../../components/RHFRadioGroup";
 import { RHFCheckbox } from "../../components/RHFCheckbox";
 import { RHFDateAndTimePicker } from "../../components/RHFDateAndTimePicker";
 import { RHFDateRangePicker } from "../../components/RHFDateRangePicker";
+import { RHFSlider } from "../../components/RHFSlider";
 // import { useEffect } from "react";
 
 const Users = () => {
   const {
+    getValues,
     handleSubmit,
     register,
     watch,
-    formState: { errors },
+    formState: { errors }
   } = useFormContext<Schema>();
 
   const statesQuery = useStates();
@@ -80,11 +82,17 @@ const Users = () => {
         />
 
         <RHFDateAndTimePicker<Schema>
-          label="Registeration Date And Time"
-          name="registerationDateAndTime"
+          label="Registration Date And Time"
+          name="registrationDateAndTime"
         />
         <Typography>Former Employment Period:</Typography>
         <RHFDateRangePicker<Schema> name="formerEmploymentPeriod" />
+        <RHFSlider<Schema>
+          name="salaryRange"
+          label="Salary"
+          min={getValues("salaryRange")[0]}
+          max={getValues("salaryRange")[1]}
+        />
 
         <Button variant="contained" type="submit">
           Submit
