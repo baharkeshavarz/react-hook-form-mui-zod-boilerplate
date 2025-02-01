@@ -14,6 +14,7 @@ import { RHFCheckbox } from "../../components/RHFCheckbox";
 import { RHFDateAndTimePicker } from "../../components/RHFDateAndTimePicker";
 import { RHFDateRangePicker } from "../../components/RHFDateRangePicker";
 import { RHFSlider } from "../../components/RHFSlider";
+import { RHFSwitch } from "../../components/RHFSwitch";
 // import { useEffect } from "react";
 
 const Users = () => {
@@ -93,6 +94,8 @@ const Users = () => {
           min={getValues("salaryRange")[0]}
           max={getValues("salaryRange")[1]}
         />
+
+        <RHFSwitch<Schema> label="Are you a teacher?" name="isTeacher" />
 
         <Button variant="contained" type="submit">
           Submit
