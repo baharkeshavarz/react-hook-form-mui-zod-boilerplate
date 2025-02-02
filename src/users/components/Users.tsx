@@ -1,4 +1,4 @@
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
 import { Schema } from "../types/schema";
@@ -15,16 +15,11 @@ import { RHFDateAndTimePicker } from "../../components/RHFDateAndTimePicker";
 import { RHFDateRangePicker } from "../../components/RHFDateRangePicker";
 import { RHFSlider } from "../../components/RHFSlider";
 import { RHFSwitch } from "../../components/RHFSwitch";
+import { RHFTextField } from "../../components/RHFTextField";
 // import { useEffect } from "react";
 
 const Users = () => {
-  const {
-    getValues,
-    handleSubmit,
-    register,
-    watch,
-    formState: { errors }
-  } = useFormContext<Schema>();
+  const { getValues, handleSubmit } = useFormContext<Schema>();
 
   const statesQuery = useStates();
   const languagesQuery = useLanguages();
@@ -46,19 +41,8 @@ const Users = () => {
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <Stack width={300} spacing={2}>
-        {watch("name")}
-        <TextField
-          {...register("name")}
-          label="Name"
-          error={!!errors.name}
-          helperText={errors.name?.message}
-        />
-        <TextField
-          {...register("email")}
-          label="Email"
-          error={!!errors.email}
-          helperText={errors.email?.message}
-        />
+        <RHFTextField<Schema> name="name" label="Name" />
+        <RHFTextField<Schema> name="email" label="Email" />
 
         <RHFAutocomplete<Schema>
           options={statesQuery?.data || []}
