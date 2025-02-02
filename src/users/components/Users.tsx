@@ -41,6 +41,8 @@ const Users = () => {
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <Stack width={300} spacing={2}>
+        <RHFSwitch<Schema> label="Are you a teacher?" name="isTeacher" />
+
         <RHFTextField<Schema> name="name" label="Name" />
         <RHFTextField<Schema> name="email" label="Email" />
 
@@ -78,8 +80,6 @@ const Users = () => {
           min={getValues("salaryRange")[0]}
           max={getValues("salaryRange")[1]}
         />
-
-        <RHFSwitch<Schema> label="Are you a teacher?" name="isTeacher" />
 
         <Button variant="contained" type="submit">
           Submit
