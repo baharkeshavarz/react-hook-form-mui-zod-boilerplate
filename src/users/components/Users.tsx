@@ -1,7 +1,13 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { SubmitHandler, useFormContext } from "react-hook-form";
+import { Fragment, useEffect } from "react";
+import { Button, Container, Stack, Typography } from "@mui/material";
+import {
+  SubmitHandler,
+  useFieldArray,
+  useFormContext,
+  useWatch
+} from "react-hook-form";
 import RHFAutocomplete from "../../components/RHFAutocomplete";
-import { Schema } from "../types/schema";
+import { defaultValues, Schema } from "../types/schema";
 import {
   useGenders,
   useLanguages,
@@ -19,7 +25,8 @@ import { RHFTextField } from "../../components/RHFTextField";
 // import { useEffect } from "react";
 
 const Users = () => {
-  const { getValues, handleSubmit } = useFormContext<Schema>();
+  const { getValues, handleSubmit, control, unregister, reset } =
+    useFormContext<Schema>();
 
   const statesQuery = useStates();
   const languagesQuery = useLanguages();
@@ -38,10 +45,43 @@ const Users = () => {
   //   return () => sub.unsubscribe();
   // }, [watch]);
 
+  const isTeacher = useWatch({ control, name: "isTeacher" });
+  const { append, fields, remove, replace } = useFieldArray({
+    control,
+    name: "students"
+  });
+  useEffect(() => {
+    if (!isTeacher) {
+      replace([]);
+      unregister("students");
+    }
+  }, [isTeacher, unregister, replace]);
+
+  const handleReset = () => {
+    reset(defaultValues);
+  };
+
   return (
-    <form onSubmit={handleSubmit(submitForm)}>
+    <Container maxWidth="sm" onSubmit={handleSubmit(submitForm)}>
       <Stack width={300} spacing={2}>
         <RHFSwitch<Schema> label="Are you a teacher?" name="isTeacher" />
+        {isTeacher && (
+          <Button type="button" onClick={() => append({ name: "" })}>
+            Add New Students
+          </Button>
+        )}
+
+        {fields.map((field, index) => (
+          <Fragment key={field.id}>
+            <RHFTextField
+              label="Student Name"
+              name={`students.${index}.name`}
+            />
+            <Button color="error" type="button" onClick={() => remove(index)}>
+              Remove
+            </Button>
+          </Fragment>
+        ))}
 
         <RHFTextField<Schema> name="name" label="Name" />
         <RHFTextField<Schema> name="email" label="Email" />
@@ -80,12 +120,21 @@ const Users = () => {
           min={getValues("salaryRange")[0]}
           max={getValues("salaryRange")[1]}
         />
-
+      </Stack>
+      <Stack display="flex" justifyContent="space-between" flexDirection="row">
         <Button variant="contained" type="submit">
-          Submit
+          New User
+        </Button>
+        <Button
+          variant="contained"
+          type="submit"
+          color="error"
+          onClick={handleReset}
+        >
+          Reset
         </Button>
       </Stack>
-    </form>
+    </Container>
   );
 };
 
