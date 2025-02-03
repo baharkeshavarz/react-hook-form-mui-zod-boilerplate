@@ -11,7 +11,7 @@ export function useStates() {
     queryFn: () =>
       axios
         .get<Option[]>("http://localhost:8080/states")
-        .then((res) => res.data),
+        .then((res) => res.data)
   });
 }
 
@@ -21,7 +21,7 @@ export function useLanguages() {
     queryFn: () =>
       axios
         .get<Option[]>("http://localhost:8080/languages")
-        .then((res) => res.data),
+        .then((res) => res.data)
   });
 }
 
@@ -31,7 +31,7 @@ export function useGenders() {
     queryFn: () =>
       axios
         .get<Option[]>("http://localhost:8080/genders")
-        .then((res) => res.data),
+        .then((res) => res.data)
   });
 }
 
@@ -41,7 +41,7 @@ export function useSkills() {
     queryFn: () =>
       axios
         .get<Option[]>("http://localhost:8080/skills")
-        .then((res) => res.data),
+        .then((res) => res.data)
   });
 }
 
@@ -52,9 +52,9 @@ export function useUsers() {
       axios.get<ApiGet[]>("http://localhost:8080/users").then((response) =>
         response.data.map((user) => ({
           id: user.id.toString(),
-          label: user.name,
+          label: user.name
         }))
-      ),
+      )
   });
 }
 
@@ -73,7 +73,7 @@ export function useUser(id: string) {
         email: data.email,
         formerEmploymentPeriod: [
           new Date(data.formerEmploymentPeriod[0]),
-          new Date(data.formerEmploymentPeriod[1]),
+          new Date(data.formerEmploymentPeriod[1])
         ],
         gender: data.gender,
         languagesSpoken: data.languagesSpoken,
@@ -82,9 +82,9 @@ export function useUser(id: string) {
         skills: data.skills,
         states: data.states,
         students: data.students,
-        isTeacher: data.isTeacher,
+        isTeacher: data.isTeacher
       };
     },
-    enabled: !!id,
+    enabled: !!id
   });
 }

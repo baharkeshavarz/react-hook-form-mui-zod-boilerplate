@@ -23,5 +23,5 @@ export type ApiCommon = {
   }[];
 };
 
-export type ApiCreateEdit = ApiCommon & (Create | Edit);
+export type ApiCreateEdit = ApiCommon & (Create | Edit); // discriminated union
 export type ApiGet = Edit & ApiCommon;
